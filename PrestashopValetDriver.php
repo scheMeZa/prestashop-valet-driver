@@ -32,6 +32,76 @@ class PrestaShopValetDriver extends ValetDriver
             return $staticFilePath;
         }
 
+        // RewriteRule ^c/([0-9]+)(\-[\.*_a-zA-Z0-9-]*)(-[0-9]+)?/.+\.jpg$ %{ENV:REWRITEBASE}img/c/$1$2$3.jpg [L]
+        if (preg_match('/c\/([0-9]+)(\-[\.*_a-zA-Z0-9-]*)(-[0-9]+?)\/.+\.jpg/i', $uri, $matches)) {
+            if (is_file($staticFilePath = "{$sitePath}/img/c/{$matches[1]}{$matches[2]}{$matches[3]}.jpg")) {
+                return $staticFilePath;
+            }
+        }
+
+        // RewriteRule ^c/([a-zA-Z_-]+)(-[0-9]+)?/.+\.jpg$ %{ENV:REWRITEBASE}img/c/$1$2.jpg [L]
+        if (preg_match('/c\/([a-zA-Z_-]+)(-[0-9]+?)\/.+\.jpg/i', $uri, $matches)) {
+            if (is_file($staticFilePath = "{$sitePath}/img/c/{$matches[1]}{$matches[2]}.jpg")) {
+                return $staticFilePath;
+            }
+        }
+
+        // RewriteRule ^([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$ %{ENV:REWRITEBASE}img/p/$1/$2/$3/$4/$5/$6/$7/$8/$1$2$3$4$5$6$7$8$9$10.jpg [L]
+        if (preg_match('/([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])(\-[_a-zA-Z0-9-]*?)(-[0-9]+?)\/.+\.jpg/i', $uri, $matches)) {
+            if (is_file($staticFilePath = "{$sitePath}/img/p/{$matches[1]}/{$matches[2]}/{$matches[3]}/{$matches[4]}/{$matches[5]}/{$matches[6]}/{$matches[7]}/{$matches[8]}/{$matches[1]}{$matches[2]}{$matches[3]}{$matches[4]}{$matches[5]}{$matches[6]}{$matches[7]}{$matches[8]}{$matches[9]}{$matches[10]}.jpg")) {
+                return $staticFilePath;
+            }
+        }
+
+        // RewriteRule ^([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$ %{ENV:REWRITEBASE}img/p/$1/$2/$3/$4/$5/$6/$7/$1$2$3$4$5$6$7$8$9.jpg [L]
+        if (preg_match('/([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])(\-[_a-zA-Z0-9-]*?)(-[0-9]+?)\/.+\.jpg/i', $uri, $matches)) {
+            if (is_file($staticFilePath = "{$sitePath}/img/p/{$matches[1]}/{$matches[2]}/{$matches[3]}/{$matches[4]}/{$matches[5]}/{$matches[6]}/{$matches[7]}/{$matches[1]}{$matches[2]}{$matches[3]}{$matches[4]}{$matches[5]}{$matches[6]}{$matches[7]}{$matches[8]}{$matches[9]}.jpg")) {
+                return $staticFilePath;
+            }
+        }
+
+        // RewriteRule ^([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$ %{ENV:REWRITEBASE}img/p/$1/$2/$3/$4/$5/$6/$1$2$3$4$5$6$7$8.jpg [L]
+        if (preg_match('/([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])(\-[_a-zA-Z0-9-]*?)(-[0-9]+?)\/.+\.jpg/i', $uri, $matches)) {
+            if (is_file($staticFilePath = "{$sitePath}/img/p/{$matches[1]}/{$matches[2]}/{$matches[3]}/{$matches[4]}/{$matches[5]}/{$matches[6]}/{$matches[1]}{$matches[2]}{$matches[3]}{$matches[4]}{$matches[5]}{$matches[6]}{$matches[7]}{$matches[8]}.jpg")) {
+                return $staticFilePath;
+            }
+        }
+
+        // RewriteRule ^([0-9])([0-9])([0-9])([0-9])([0-9])(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$ %{ENV:REWRITEBASE}img/p/$1/$2/$3/$4/$5/$1$2$3$4$5$6$7.jpg [L]
+        if (preg_match('/([0-9])([0-9])([0-9])([0-9])([0-9])(\-[_a-zA-Z0-9-]*?)(-[0-9]+?)\/.+\.jpg/i', $uri, $matches)) {
+            if (is_file($staticFilePath = "{$sitePath}/img/p/{$matches[1]}/{$matches[2]}/{$matches[3]}/{$matches[4]}/{$matches[5]}/{$matches[1]}{$matches[2]}{$matches[3]}{$matches[4]}{$matches[5]}{$matches[6]}{$matches[7]}.jpg")) {
+                return $staticFilePath;
+            }
+        }
+
+        // RewriteRule ^([0-9])([0-9])([0-9])([0-9])(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$ %{ENV:REWRITEBASE}img/p/$1/$2/$3/$4/$1$2$3$4$5$6.jpg [L]
+        if (preg_match('/([0-9])([0-9])([0-9])([0-9])(\-[_a-zA-Z0-9-]*?)(-[0-9]+?)\/.+\.jpg/i', $uri, $matches)) {
+            if (is_file($staticFilePath = "{$sitePath}/img/p/{$matches[1]}/{$matches[2]}/{$matches[3]}/{$matches[4]}/{$matches[1]}{$matches[2]}{$matches[3]}{$matches[4]}{$matches[5]}{$matches[6]}.jpg")) {
+                return $staticFilePath;
+            }
+        }
+
+        // RewriteRule ^([0-9])([0-9])([0-9])(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$ %{ENV:REWRITEBASE}img/p/$1/$2/$3/$1$2$3$4$5.jpg [L]
+        if (preg_match('/([0-9])([0-9])([0-9])(\-[_a-zA-Z0-9-]*?)(-[0-9]+?)\/.+\.jpg/i', $uri, $matches)) {
+            if (is_file($staticFilePath = "{$sitePath}/img/p/{$matches[1]}/{$matches[2]}/{$matches[3]}/{$matches[1]}{$matches[2]}{$matches[3]}{$matches[4]}{$matches[5]}.jpg")) {
+                return $staticFilePath;
+            }
+        }
+
+        // RewriteRule ^([0-9])([0-9])(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$ %{ENV:REWRITEBASE}img/p/$1/$2/$1$2$3$4.jpg [L]
+        if (preg_match('/([0-9])([0-9])(\-[_a-zA-Z0-9-]*?)(-[0-9]+?)\/.+\.jpg/i', $uri, $matches)) {
+            if (is_file($staticFilePath = "{$sitePath}/img/p/{$matches[1]}/{$matches[2]}/{$matches[1]}{$matches[2]}{$matches[3]}{$matches[4]}.jpg")) {
+                return $staticFilePath;
+            }
+        }
+
+        // RewriteRule ^([0-9])(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$ %{ENV:REWRITEBASE}img/p/$1/$1$2$3.jpg [L]
+        if (preg_match('/([0-9])(\-[_a-zA-Z0-9-]*?)(-[0-9]+?)\/.+\.jpg/i', $uri, $matches)) {
+            if (is_file($staticFilePath = "{$sitePath}/img/p/{$matches[1]}/{$matches[1]}{$matches[2]}{$matches[3]}.jpg")) {
+                return $staticFilePath;
+            }
+        }
+
         return false;
     }
 
@@ -46,15 +116,19 @@ class PrestaShopValetDriver extends ValetDriver
      */
     public function frontControllerPath($sitePath, $siteName, $uri)
     {
-        if (preg_match('/(.*)modules(.*)/', $uri)) {
-            return $sitePath . $uri;
+        //Legacy URls
+        $parts = explode('/', $uri);
+        if (isset($parts[1]) && $parts[1] != '' && file_exists($adminIdex = $sitePath . '/' . $parts[1] . '/index.php')) {
+            $_SERVER['SCRIPT_FILENAME'] = $adminIdex;
+            $_SERVER['SCRIPT_NAME']     = '/' . $parts[1] . '/index.php';
+            if (isset($_GET['controller']) || isset($_GET['tab'])) {
+                return $adminIdex;
+            }
+            return $adminIdex;
         }
 
-        if (preg_match('/(.*)admin(.*)/', $uri)) {
-            $adminDirectoryName = explode(DIRECTORY_SEPARATOR, $uri)[1];
-            $sitePath           .= DIRECTORY_SEPARATOR . $adminDirectoryName;
-        }
-
+        $_SERVER['SCRIPT_NAME']     = '/index.php';
+        $_SERVER['SCRIPT_FILENAME'] = $sitePath . '/index.php';
         return $sitePath . '/index.php';
     }
 }
